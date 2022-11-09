@@ -10,25 +10,17 @@ $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 include 'config/database.php';
  
 // read current record's data
-try {
+
     // prepare select query
-    $query = "SELECT p_id, p_name, p_description, p_price FROM products WHERE p_id = ? LIMIT 0,1";
-    $stmt = $con->prepare( $query );
- 
-    // this is the first question mark
-    $stmt->bindParam(1, $id);
- 
-    // execute our query
-    $stmt->execute();
+    $query = "SELECT p_id, p_name, p_description, p_price FROM products WHERE p_id = '$id'";
+    $result = $con->query( $query );
+    $row = $result->fetch_assoc();
+
  
     // store retrieved row to a variable
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $json = json_encode($row);
     echo $json;
-}
+
  
-// show error
-catch(PDOException $exception){
-    die('ERROR: ' . $exception->getMessage());
-}
+
 ?>

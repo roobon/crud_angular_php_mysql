@@ -22,7 +22,7 @@ while($row = $result->fetch_assoc()){
 echo "<pre>";
 print_r($output);
 echo "<hr>";
-// $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
  $json = json_encode($output);
  echo $json;
 ?>
