@@ -1,7 +1,7 @@
 <?php
 // used to connect to the database
 $host = "localhost";
-$db_name = "web_api";
+$db_name = "crud_angular_php_mysql";
 $username = "root";
 $password = "mysql";
   
